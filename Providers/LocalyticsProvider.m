@@ -13,31 +13,35 @@
 @implementation LocalyticsProvider
 #ifdef AR_LOCALYTICS_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (id)initWithIdentifier:(NSString *)identifier appLaunchinOptions:(NSDictionary *)launchOptions{
     NSAssert([Localytics class], @"Localytics is not included");
 
     if( ( self = [super init] ) ) {
         
-        [Localytics integrate:identifier];
+        if (launchOptions) {
+            [Localytics autoIntegrate:identifier launchOptions:launchOptions];
+        } else {
+            [Localytics integrate:identifier];
         
-        for( NSString *activeEvent in @[ UIApplicationDidBecomeActiveNotification, 
-                                         UIApplicationWillEnterForegroundNotification ]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(startLocalytics)
-                                                         name:activeEvent
-                                                       object:nil];
-        }
+            for( NSString *activeEvent in @[ UIApplicationDidBecomeActiveNotification, 
+                                             UIApplicationWillEnterForegroundNotification ]) {
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(startLocalytics)
+                                                             name:activeEvent
+                                                           object:nil];
+            }
 
-        for( NSString *inactiveEvent in @[ UIApplicationWillResignActiveNotification,
-                                           UIApplicationWillTerminateNotification,
-                                           UIApplicationDidEnterBackgroundNotification ]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(stopLocalytics)
-                                                         name:inactiveEvent
-                                                       object:nil];
-        }
+            for( NSString *inactiveEvent in @[ UIApplicationWillResignActiveNotification,
+                                               UIApplicationWillTerminateNotification,
+                                               UIApplicationDidEnterBackgroundNotification ]) {
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                                                         selector:@selector(stopLocalytics)
+                                                             name:inactiveEvent
+                                                           object:nil];
+            }
         
-        [Localytics openSession];
+            [Localytics openSession];
+        }
     }
 
     return self;
