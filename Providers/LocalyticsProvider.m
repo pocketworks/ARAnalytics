@@ -13,7 +13,7 @@
 @implementation LocalyticsProvider
 #ifdef AR_LOCALYTICS_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier appLaunchinOptions:(NSDictionary *)launchOptions{
+- (id)initWithIdentifier:(NSString *)identifier appLaunchingOptions:(NSDictionary *)launchOptions{
     NSAssert([Localytics class], @"Localytics is not included");
 
     if( ( self = [super init] ) ) {
