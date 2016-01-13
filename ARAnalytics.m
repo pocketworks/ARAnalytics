@@ -300,7 +300,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 + (void)setupLocalyticsWithAppKey:(NSString *)key appLaunchingOptions:(NSDictionary *)launchOptions
 {
 #ifdef AR_LOCALYTICS_EXISTS
-    LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key appLaunchinOptions:launchOptions];
+    LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key appLaunchingOptions:launchOptions];
     [self setupProvider:provider];
 #endif
 }
