@@ -56,7 +56,7 @@
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
 + (void)setupGoogleAnalyticsWithID:(NSString *)identifier;
-+ (void)setupLocalyticsWithAppKey:(NSString *)key appLaunchinOptions:(NSDictionary *)launchOptions;
++ (void)setupLocalyticsWithAppKey:(NSString *)key appLaunchingOptions:(NSDictionary *)launchOptions;
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key;
 + (void)setupCrittercismWithAppID:(NSString *)appID;
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host;
