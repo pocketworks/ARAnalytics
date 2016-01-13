@@ -67,7 +67,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
 
     if (analyticsDictionary[ARLocalyticsAppKey]) {
-        [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsAppKey]];
+        [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsAppKey] appLaunchingOptions:nil];
     }
 
     if (analyticsDictionary[ARMixpanelToken]) {
@@ -297,10 +297,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupLocalyticsWithAppKey:(NSString *)key
++ (void)setupLocalyticsWithAppKey:(NSString *)key appLaunchingOptions:(NSDictionary *)launchOptions
 {
 #ifdef AR_LOCALYTICS_EXISTS
-    LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
+    LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key appLaunchinOptions:launchOptions];
     [self setupProvider:provider];
 #endif
 }
