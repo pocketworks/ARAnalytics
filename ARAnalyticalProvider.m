@@ -22,6 +22,11 @@ NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey = @"screen
     return [super init];
 }
 
+- (id)initWithIdentifier:(NSString *)identifier appLaunchingOptions:(NSDictionary *)launchOptions
+{
+    return [super init];
+}
+
 - (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email {
     [self identifyUserWithID:userID andEmailAddress:email];
     if (anonymousID) {
